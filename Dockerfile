@@ -8,10 +8,10 @@ USER root
 # the minimal base image. Also install 'rsync' so the 'oc rsync' command
 # can be used to copy files into the running container.
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends ffmpeg rsync && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && \
+#     apt-get install -y --no-install-recommends ffmpeg rsync && \
+#     apt-get clean && \
+#     rm -rf /var/lib/apt/lists/*
 
 # Add labels so OpenShift recognises this as an S2I builder image.
 
