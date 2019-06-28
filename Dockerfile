@@ -23,11 +23,6 @@ COPY s2i /opt/app-root/s2i
 # really maps to user ID for root.
 
 
-RUN 
-    chown -R 1001 /opt/app-root/s2i && \
-    chgrp -R 0 /opt/app-root/s2i && \
-    chmod -R g+w /opt/app-root/s2i && \
-    
 
 
 USER 0
