@@ -30,7 +30,7 @@ RUN
     
 
 
-USER 1001
+USER 0
 
 
 # Add labels so OpenShift recognises this as an S2I builder image.
