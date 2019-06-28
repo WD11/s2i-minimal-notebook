@@ -13,6 +13,15 @@ USER root
 #     apt-get clean && \
 #     rm -rf /var/lib/apt/lists/*
 
+
+
+# Revert the user but set it to be an integer user ID else the S2I build
+# process will reject the builder image as can't tell if user name
+# really maps to user ID for root.
+
+USER 1001
+
+
 # Add labels so OpenShift recognises this as an S2I builder image.
 
 LABEL io.k8s.description="S2I builder for Jupyter (minimal-notebook)." \
@@ -26,11 +35,7 @@ LABEL io.k8s.description="S2I builder for Jupyter (minimal-notebook)." \
 
 COPY s2i /opt/app-root/s2i
 
-# Revert the user but set it to be an integer user ID else the S2I build
-# process will reject the builder image as can't tell if user name
-# really maps to user ID for root.
 
-USER 1001
 
 # Override command to startup Jupyter notebook. The original is wrapped
 # so we can set an environment variable for notebook password.
