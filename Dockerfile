@@ -36,3 +36,4 @@ USER 1000
 # so we can set an environment variable for notebook password.
 
 #CMD [ "/opt/app-root/s2i/bin/run" ]
+CMD [ "/usr/local/bin/start-notebook" ]
