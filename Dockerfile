@@ -13,11 +13,22 @@ USER root
 #     apt-get clean && \
 #     rm -rf /var/lib/apt/lists/*
 
+# Copy in S2I builder scripts for installing Python packages and copying
+# in of notebooks and data files.
 
+COPY s2i /opt/app-root/s2i
 
 # Revert the user but set it to be an integer user ID else the S2I build
 # process will reject the builder image as can't tell if user name
 # really maps to user ID for root.
+
+
+RUN 
+    chown -R 1001 /opt/app-root/s2i && \
+    chgrp -R 0 /opt/app-root/s2i && \
+    chmod -R g+w /opt/app-root/s2i && \
+    
+
 
 USER 1001
 
@@ -30,10 +41,7 @@ LABEL io.k8s.description="S2I builder for Jupyter (minimal-notebook)." \
       io.openshift.tags="builder,python,jupyter" \
       io.openshift.s2i.scripts-url="image:///opt/app-root/s2i/bin"
 
-# Copy in S2I builder scripts for installing Python packages and copying
-# in of notebooks and data files.
 
-COPY s2i /opt/app-root/s2i
 
 
 
