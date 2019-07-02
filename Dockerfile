@@ -8,10 +8,10 @@ USER root
 # the minimal base image. Also install 'rsync' so the 'oc rsync' command
 # can be used to copy files into the running container.
 
-# RUN apt-get update && \
-#     apt-get install -y --no-install-recommends libav-tools rsync && \
-#     apt-get clean && \
-#     rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends libav-tools rsync && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Add labels so OpenShift recognises this as an S2I builder image.
 
@@ -35,5 +35,4 @@ USER 1000
 # Override command to startup Jupyter notebook. The original is wrapped
 # so we can set an environment variable for notebook password.
 
-#CMD [ "/opt/app-root/s2i/bin/run" ]
-CMD [ "/usr/local/bin/start-notebook.sh" ]
+CMD [ "/opt/app-root/s2i/bin/run" ]
