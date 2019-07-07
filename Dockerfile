@@ -28,7 +28,7 @@ COPY s2i /opt/app-root/s2i
 
 # Adjust permissions on home directory so writable by group root.
 
-RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
+RUN chown -Rf jovyan /opt/app-root  && chgrp -Rf users /opt/app-root && chmod -Rf g+w /opt/app-root
 
 # Adjust permissions on /etc/passwd so writable by group root.
 
