@@ -31,7 +31,7 @@ COPY s2i /opt/app-root/s2i
 
 #RUN chown -Rf jovyan /opt/app-root  && chgrp -Rf users /opt/app-root && chmod -Rf g+w /opt/app-root  &&  usermod -g root jovyan
 
-RUN usermod -g root jovyan
+RUN usermod -g root jovyan  && chown -Rf jovyan /opt
 
 # Adjust permissions on /etc/passwd so writable by group root.
 
@@ -41,7 +41,7 @@ RUN chmod g+w /etc/passwd
 # process will reject the builder image as can't tell if user name
 # really maps to user ID for root.
 
-USER 100
+USER 1000
 
 # Override command to startup Jupyter notebook. The original is wrapped
 # so we can set an environment variable for notebook password.
