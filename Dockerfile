@@ -34,6 +34,10 @@ RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
 
 RUN chmod g+w /etc/passwd
 
+# Adjust permissions on /opt/conda so writable by other user.
+
+RUN chmod o+w /opt/conda
+
 # Revert the user but set it to be an integer user ID else the S2I build
 # process will reject the builder image as can't tell if user name
 # really maps to user ID for root.
