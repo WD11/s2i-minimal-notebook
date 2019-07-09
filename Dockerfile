@@ -32,7 +32,7 @@ COPY s2i /opt/app-root/s2i
 #RUN chown -Rf jovyan /opt/app-root  && chgrp -Rf users /opt/app-root && chmod -Rf g+w /opt/app-root  &&  usermod -g root jovyan
 
 #RUN usermod -g root jovyan  && chown -Rf jovyan /opt
-RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
+#RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
 
 # Adjust permissions on /etc/passwd so writable by group root.
 
