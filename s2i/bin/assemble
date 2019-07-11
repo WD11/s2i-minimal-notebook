@@ -18,7 +18,6 @@ if [ -f /home/$NB_USER/work/requirements.txt ]; then
     (cd /home/$NB_USER/work && conda install -y --file requirements.txt)
     rm /home/$NB_USER/work/requirements.txt
     
-    
- else
+else
     (cd /home/$NB_USER/work && touch i_am_not_used.txt)
 fi
