@@ -17,4 +17,8 @@ rm -rf /tmp/src
 if [ -f /home/$NB_USER/work/requirements.txt ]; then
     (cd /home/$NB_USER/work && conda install -y --file requirements.txt)
     rm /home/$NB_USER/work/requirements.txt
+    
+    
+ else
+    (cd /home/$NB_USER/work && touch requirements.txt)
 fi
