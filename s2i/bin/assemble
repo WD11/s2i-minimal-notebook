@@ -21,3 +21,5 @@ if [ -f /home/$NB_USER/work/requirements.txt ]; then
 else
     (cd /home/$NB_USER/work && touch i_am_not_used.txt)
 fi
+
+touch  i_am_created_in_the_build_prase.txt
