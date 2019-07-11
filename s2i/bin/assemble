@@ -20,5 +20,5 @@ if [ -f /home/$NB_USER/work/requirements.txt ]; then
     
     
  else
-    (cd /home/$NB_USER/work && touch requirements.txt)
+    (cd /home/$NB_USER/work && touch i_am_not_used.txt)
 fi
