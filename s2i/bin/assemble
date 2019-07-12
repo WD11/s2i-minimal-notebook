@@ -6,7 +6,8 @@ set -eo pipefail
 
 cp -Rf /tmp/src/. /home/$NB_USER/work
 
-#rm -rf /tmp/src
+#该目录下无文件
+rm -rf /tmp/src
 
 # Install any Python modules listed in the 'requirements.txt' file. Need
 # to ensure we are in the 'work' directory so relative directory paths
