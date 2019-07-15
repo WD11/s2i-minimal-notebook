@@ -34,11 +34,6 @@ RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
 
 RUN chmod g+w /etc/passwd && \
     chmod o+w /opt/conda 
-    
-    
-#更改/etc/shells文件权限，使其所在组可写，以此来更改用户的登录shell
-RUN chmod g+w /etc/shells && \
-    bash
 
 # Revert the user but set it to be an integer user ID else the S2I build
 # process will reject the builder image as can't tell if user name
