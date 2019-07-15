@@ -36,7 +36,7 @@ RUN chmod g+w /etc/passwd && \
     chmod o+w /opt/conda
     
 #更改/etc/shells文件权限，使其所在组可写，以此来更改用户的登录shell
-Run 沉默的 g+w /etc/shells
+Run chmod g+w /etc/shells
 
 # Revert the user but set it to be an integer user ID else the S2I build
 # process will reject the builder image as can't tell if user name
