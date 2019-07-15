@@ -37,7 +37,7 @@ RUN chmod g+w /etc/passwd && \
     
     
 #更改/etc/shells文件权限，使其所在组可写，以此来更改用户的登录shell
-Run chmod g+w /etc/shells && \
+RUN chmod g+w /etc/shells && \
     bash
 
 # Revert the user but set it to be an integer user ID else the S2I build
