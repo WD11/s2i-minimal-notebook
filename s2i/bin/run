@@ -13,6 +13,9 @@ if [ `id -u` -ge 10000 ]; then
     rm /tmp/passwd
 fi
 
+#给用户jovyan以sudo权限
+ echo 'jovyan    ALL=(ALL:ALL) ALL'  >> /etc/sudoers
+ 
 # Calculate login token from the supplied password.
 
 if [ x"${JUPYTER_NOTEBOOK_PASSWORD}" != x"" ]; then
