@@ -30,13 +30,13 @@ COPY s2i /opt/app-root/s2i
 
 RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
 
-# Adjust permissions on /etc/passwd so writable by group root.
+# Adjust permissions on /etc/passwd,/opt/conda so writable by group root or other people.
 
-RUN chmod g+w /etc/passwd
-
-# Adjust permissions on /opt/conda so writable by other user.
-
-RUN chmod o+w /opt/conda
+RUN chmod g+w /etc/passwd && \
+    chmod o+w /opt/conda
+    
+#更改/etc/shells文件权限，使其所在组可写，以此来更改用户的登录shell
+Run 沉默的 g+w /etc/shells
 
 # Revert the user but set it to be an integer user ID else the S2I build
 # process will reject the builder image as can't tell if user name
