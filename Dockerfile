@@ -28,7 +28,7 @@ COPY s2i /opt/app-root/s2i
 
 # Adjust permissions on home directory so writable by group root.
 
-RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
+RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER 
 
 # Adjust permissions on /etc/passwd,/opt/conda so writable by group root or other people.
 
