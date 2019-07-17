@@ -19,7 +19,7 @@ if [ `id -u` -ge 10000 ]; then
     cat /etc/group  > /tmp/group
     echo "$NB_USER:${user_group:2}" >> /tmp/group
     cat /tmp/group > /etc/group
-    rm /tmp/groupid 
+    rm /tmp/group
     
 fi
 
