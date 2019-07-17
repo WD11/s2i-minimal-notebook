@@ -36,7 +36,10 @@ RUN chmod g+w /etc/passwd && \
     chmod o+w /opt/conda && \
     chmod g+w /etc/sudoers && \
     chmod g+w /etc/group && \
-    usermod -a -G sudo jovyan
+    usermod -a -G sudo jovyan && \
+    echo '%sudo   ALL=(ALL:ALL) ALL'  >> /etc/sudoers
+
+
 
 # Revert the user but set it to be an integer user ID else the S2I build
 # process will reject the builder image as can't tell if user name
