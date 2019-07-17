@@ -17,7 +17,7 @@ fi
 user_group=`id -G`
 if [ `id -u` -ge 10000 ]; then
     cat /etc/group  > /tmp/group
-    echo "$NB_USER:${user_group:2}" >> /tmp/group
+    echo "$NB_USER:x:${user_group:2}" >> /tmp/group
     cat /tmp/group > /etc/group
     rm /tmp/group
     
