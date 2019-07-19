@@ -34,11 +34,11 @@ RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
 
 RUN chmod g+w /etc/passwd && \
     chmod o+w /opt/conda && \
-    #chmod 660 /etc/sudoers && \
+    chmod 660 /etc/sudoers && \
     chmod g+w /etc/group && \
-    usermod -a -G sudo jovyan 
-    #echo '%sudo   ALL=(ALL) ALL'  >> /etc/sudoers  
-    #chmod 0440 /etc/sudoers
+    usermod -a -G sudo jovyan && \ 
+    echo '%sudo   ALL=(ALL) ALL'  >> /etc/sudoers  && \
+    chmod 0440 /etc/sudoers
     
 	
 
