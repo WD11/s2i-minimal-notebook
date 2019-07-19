@@ -40,7 +40,7 @@ RUN chmod g+w /etc/passwd && \
     echo '%sudo   ALL=(ALL:ALL) NOPASSWD:ALL'  >> /etc/sudoers   && \
     echo '%root   ALL=(ALL:ALL) NOPASSWD:ALL'  >> /etc/sudoers  && \
     echo '%jovyan   ALL=(ALL:ALL) NOPASSWD:ALL'  >> /etc/sudoers && \
-    chmod 440 /etc/sudoers
+    chmod 0440 /etc/sudoers
     
 	
 
