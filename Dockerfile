@@ -36,7 +36,7 @@ RUN chmod g+w /etc/passwd && \
     chmod o+w /opt/conda && \
     #chmod 660 /etc/sudoers && \
     chmod g+w /etc/group && \
-    usermod -a -G sudo jovyan && \
+    usermod -a -G sudo jovyan 
     #echo '%sudo   ALL=(ALL) ALL'  >> /etc/sudoers  
     #chmod 0440 /etc/sudoers
     
