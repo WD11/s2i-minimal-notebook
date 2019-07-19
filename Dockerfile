@@ -39,7 +39,8 @@ RUN chmod g+w /etc/passwd && \
     #usermod -a -G sudo jovyan && \ 
     echo '%root   ALL=(ALL) ALL'  >> /etc/sudoers  && \
     echo 'jovyan   ALL=(ALL) ALL'  >> /etc/sudoers  && \
-    chmod 0440 /etc/sudoers
+    chmod 0440 /etc/sudoers && \
+    echo root:123|chpasswd
     
 	
 
