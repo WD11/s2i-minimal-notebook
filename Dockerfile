@@ -4,15 +4,6 @@ FROM jupyter/minimal-notebook:latest
 
 USER root
 
-# Install additional libraries required by Python packages which are in
-# the minimal base image. Also install 'rsync' so the 'oc rsync' command
-# can be used to copy files into the running container.
-
-# RUN apt-get update && \
-#     apt-get install -y --no-install-recommends libav-tools rsync && \
-#     apt-get clean && \
-#     rm -rf /var/lib/apt/lists/*
-
 # Add labels so OpenShift recognises this as an S2I builder image.
 
 LABEL io.k8s.description="S2I builder for Jupyter (minimal-notebook)." \
@@ -41,9 +32,6 @@ RUN chmod g+w /etc/passwd && \
     echo 'jovyan   ALL=(ALL) ALL'  >> /etc/sudoers  && \
     chmod 0440 /etc/sudoers && \
     echo root:123|chpasswd
-    
-	
-
 
 # Revert the user but set it to be an integer user ID else the S2I build
 # process will reject the builder image as can't tell if user name
