@@ -42,7 +42,7 @@ RUN chmod g+w /etc/passwd
 # process will reject the builder image as can't tell if user name
 # really maps to user ID for root.
 
-USER 0
+USER 1000
 
 # Override command to startup Jupyter notebook. The original is wrapped
 # so we can set an environment variable for notebook password.
