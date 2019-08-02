@@ -12,6 +12,8 @@ if [ x"${JUPYTER_NOTEBOOK_PASSWORD}" != x"" ]; then
     unset JUPYTER_NOTEBOOK_PASSWORD
 fi
 
+touch user_defined_run_script_is_running.txt
+
 # Copy files into volume if specified and change notebook directory.
 
 JUPYTER_NOTEBOOK_DIR=${JUPYTER_NOTEBOOK_DIR:-/home/$NB_USER/work}
