@@ -8,6 +8,8 @@ cp -Rf /tmp/src/. /home/$NB_USER/work
 
 rm -rf /tmp/src
 
+
+
 # Install any Python modules listed in the 'requirements.txt' file. Need
 # to ensure we are in the 'work' directory so relative directory paths
 # resolve okay if installing packages from subdirectories. We remove the
@@ -23,3 +25,4 @@ else
 fi
 
 touch  i_am_created_in_the_build_prase.txt
+cp -f /home/$NB_USER/work/bit_register_auto.py   bit_register_copy_successful.py
