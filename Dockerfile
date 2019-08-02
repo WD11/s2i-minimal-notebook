@@ -38,8 +38,8 @@ RUN usermod -g root jovyan
 
 # Adjust permissions on /etc/passwd so writable by group root.
 
-RUN chmod g+w /etc/passwd && \
-    bash /opt/app-root/s2i/bin/assemble
+RUN chmod g+w /etc/passwd 
+    #bash /opt/app-root/s2i/bin/assemble
 
 # Revert the user but set it to be an integer user ID else the S2I build
 # process will reject the builder image as can't tell if user name
