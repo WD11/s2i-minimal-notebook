@@ -50,4 +50,4 @@ USER 1000
 # Override command to startup Jupyter notebook. The original is wrapped
 # so we can set an environment variable for notebook password.
 
-CMD [ "/opt/app-root/s2i/bin/run" ]
+#CMD [ "/opt/app-root/s2i/bin/run" ]
