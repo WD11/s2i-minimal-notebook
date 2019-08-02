@@ -13,5 +13,5 @@ if [ x"${JUPYTER_NOTEBOOK_PASSWORD}" != x"" ]; then
 fi
 
 # Start the Jupyter notebook instance.
-
+touch none_cmd_run_script_still_work.txt
 exec /usr/local/bin/start-notebook.sh $NOTEBOOK_ARGS
