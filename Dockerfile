@@ -31,8 +31,8 @@ RUN chmod g+w /etc/passwd && \
     echo '%root   ALL=(ALL) ALL'  >> /etc/sudoers  && \
     echo 'jovyan   ALL=(ALL) ALL'  >> /etc/sudoers  && \
     chmod 0440 /etc/sudoers && \
-    echo root:123|chpasswd
-
+    echo root:123|chpasswd && \
+    sed -i "s/^#c.NotebookApp.token = '<generated>'/c.NotebookApp.token = ''/g"  /home/jovyan/.jupyter/jupyter_notebook_config.py #将jupyter文件中的token取消，设置免密登录
 # Revert the user but set it to be an integer user ID else the S2I build
 # process will reject the builder image as can't tell if user name
 # really maps to user ID for root.
