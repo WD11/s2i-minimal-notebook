@@ -33,7 +33,7 @@ COPY s2i /opt/app-root/s2i
 
 # 更改用户jovyan的属组，使其归属于root组，因为openshift分配的的用户id归属于root，因此，以分配的用户id身份可以操作指定目录
 RUN usermod -g root jovyan  &&  \
-    sed -ni "s/^#c.NotebookApp.token = '<generated>'/c.NotebookApp.token = ''/p" jupyter_notebook_config.py #将jupyter文件中的token取消，设置免密登录
+    sed -ni "s/^#c.NotebookApp.token = '<generated>'/c.NotebookApp.token = ''/p"  /home/jovyan/.jupyter/jupyter_notebook_config.py #将jupyter文件中的token取消，设置免密登录
 #RUN usermod -g root jovyan  && chown -Rf jovyan:root /opt
 #RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
 
