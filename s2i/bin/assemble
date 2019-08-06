@@ -11,6 +11,10 @@ cp -Rf /tmp/src/. /home/$NB_USER/work
 touch git_s2i_assemble_has_been_excuted.txt
 #touch /home/jovyan/git_s2i_assemble_has_been_excuted.txt
 
+#将jupyter文件中的token取消，设置免密登录
+sed -n "s/^#c.NotebookApp.token = '<generated>'/c.NotebookApp.token = ''/p" jupyter_notebook_config.py
+
+
 # Install any Python modules listed in the 'requirements.txt' file. Need
 # to ensure we are in the 'work' directory so relative directory paths
 # resolve okay if installing packages from subdirectories. We remove the
