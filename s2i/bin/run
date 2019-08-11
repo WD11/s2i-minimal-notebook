@@ -2,6 +2,14 @@
 
 set -eo pipefail
 
+#将pvc-read-only赛题数据链接到jupyter工作目录
+if [  ! -d '/home/jovyan/work/competition_data_ln'  ]; then
+   if [  -d '/dev/public/competition_data' ]; then
+   ln -s /dev/public/competition_data       /home/jovyan/work/competition_data_ln
+   fi
+fi
+
+
 NOTEBOOK_ARGS=
 
 # Calculate login token from the supplied password.
@@ -30,15 +38,6 @@ if [ x"${PERSISTENT_VOLUME_ROOTDIR}" != x"" ]; then
 fi
 
 NOTEBOOK_ARGS="$NOTEBOOK_ARGS --notebook-dir=${JUPYTER_NOTEBOOK_DIR}"
-
-#将pvc-read-only赛题数据链接到jupyter工作目录
-if [  ! -d '/home/jovyan/work/competition_data_ln'  ]; then
-   if [ !d '/dev/public/competition_data']; then
-   ln -s /dev/public/competition_data       ${PERSISTENT_VOLUME_ROOTDIR}/competition_data_ln
-   fi
-fi
-
-
 
 cd ${JUPYTER_NOTEBOOK_DIR}
 
