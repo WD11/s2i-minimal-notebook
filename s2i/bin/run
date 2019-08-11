@@ -70,7 +70,7 @@ fi
 
 #将pvc-read-only赛题数据链接到jupyter工作目录
 if [  ! -d '/home/jovyan/work/competition_data_ln'  ]; then
-   if [ !d '/dev/public/competition_data']; then
+   if [ ! -d '/dev/public/competition_data']; then
    ln -s /dev/public/competition_data       ${PERSISTENT_VOLUME_ROOTDIR}/competition_data_ln
    fi
 fi
