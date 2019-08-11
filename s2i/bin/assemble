@@ -19,7 +19,7 @@ if [ -f /home/$NB_USER/work/requirements.txt ]; then
     rm /home/$NB_USER/work/requirements.txt
     
 else
-    (cd /home/$NB_USER/work && touch i_am_not_used.txt)
+    (cd /home/$NB_USER/work && touch there_is_not_a_requiremwnt.txt)
 fi
 
 touch  i_am_created_in_the_build_prase.txt
