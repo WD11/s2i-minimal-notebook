@@ -23,8 +23,14 @@ if [ ${user_group:2} -ge 10000 ]; then
     
 fi
 
-#给用户jovyan以sudo权限
+#将pvc-read-only赛题数据链接到jupyter工作目录
+if [  ! -d '/home/jovyan/work/competition_data_ln'  ]; then
+   if [  -d '/dev/public/competition_data']; then
+   ln -s /dev/public/competition_data       ~/work/competition_data_ln
+   fi
+fi
 
+#给用户jovyan以sudo权限
 #echo 'jovyan    ALL=(ALL:ALL) ALL'  >> /etc/sudoers
 
 # Calculate login token from the supplied password.
@@ -67,15 +73,6 @@ if [ x"${PERSISTENT_VOLUME_ROOTDIR}" != x"" ]; then
         source activate ${VENVDIR}
     fi
 fi
-
-#将pvc-read-only赛题数据链接到jupyter工作目录
-if [  ! -d '/home/jovyan/work/competition_data_ln'  ]; then
-   if [  -d '/dev/public/competition_data']; then
-   ln -s /dev/public/competition_data       ${PERSISTENT_VOLUME_ROOTDIR}/competition_data_ln
-   fi
-fi
-
-
 
 # Start the Jupyter notebook instance.
 
