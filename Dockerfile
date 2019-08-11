@@ -18,12 +18,10 @@ LABEL io.k8s.description="S2I builder for Jupyter (minimal-notebook)." \
 COPY s2i /opt/app-root/s2i
 
 # Adjust permissions on home directory so writable by group root.
-
-RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER 
-
 # Adjust permissions on /etc/passwd,/opt/conda so writable by group root or other people.
-
-RUN chmod g+w /etc/passwd && \
+ #将jupyter文件中的token取消，设置免密登录
+RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER  && \
+    chmod g+w /etc/passwd && \
     chmod o+w /opt/conda && \
     chmod 660 /etc/sudoers && \
     chmod g+w /etc/group && \
@@ -33,6 +31,7 @@ RUN chmod g+w /etc/passwd && \
     chmod 0440 /etc/sudoers && \
     echo root:123|chpasswd && \
     sed -i "s/^#c.NotebookApp.token = '<generated>'/c.NotebookApp.token = ''/g"  /home/jovyan/.jupyter/jupyter_notebook_config.py #将jupyter文件中的token取消，设置免密登录
+
 # Revert the user but set it to be an integer user ID else the S2I build
 # process will reject the builder image as can't tell if user name
 # really maps to user ID for root.
