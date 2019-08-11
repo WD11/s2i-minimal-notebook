@@ -29,7 +29,7 @@ COPY s2i /opt/app-root/s2i
 # Adjust permissions on home directory so writable by group root.
 # Adjust permissions on /etc/passwd so writable by group root.
 #将jupyter文件中的token取消，设置免密登录
-RUN  usermod -g root jovyan && chmod g+w /etc/passwd && /
+RUN  usermod -g root jovyan && chmod g+w /etc/passwd && \
      sed -i "s/^#c.NotebookApp.token = '<generated>'/c.NotebookApp.token = ''/g"  /home/jovyan/.jupyter/jupyter_notebook_config.py 
 
 #RUN chown -Rf jovyan /opt/app-root  && chgrp -Rf users /opt/app-root && chmod -Rf g+w /opt/app-root  &&  usermod -g root jovyan
