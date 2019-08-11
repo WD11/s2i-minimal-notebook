@@ -15,8 +15,8 @@ USER root
 
 # Add labels so OpenShift recognises this as an S2I builder image.
 
-LABEL io.k8s.description="S2I builder for Jupyter (minimal-notebook)." \
-      io.k8s.display-name="Jupyter (minimal-notebook)" \
+LABEL io.k8s.description="S2I builder for Jupyter (minimal-notebook-pvc)." \
+      io.k8s.display-name="Jupyter (minimal-notebook-pvc)" \
       io.openshift.expose-services="8888:http" \
       io.openshift.tags="builder,python,jupyter" \
       io.openshift.s2i.scripts-url="image:///opt/app-root/s2i/bin"
@@ -26,22 +26,17 @@ LABEL io.k8s.description="S2I builder for Jupyter (minimal-notebook)." \
 
 COPY s2i /opt/app-root/s2i
 
-
 # Adjust permissions on home directory so writable by group root.
+# Adjust permissions on /etc/passwd so writable by group root.
+#将jupyter文件中的token取消，设置免密登录
+RUN  usermod -g root jovyan && chmod g+w /etc/passwd && /
+     sed -i "s/^#c.NotebookApp.token = '<generated>'/c.NotebookApp.token = ''/g"  /home/jovyan/.jupyter/jupyter_notebook_config.py 
 
 #RUN chown -Rf jovyan /opt/app-root  && chgrp -Rf users /opt/app-root && chmod -Rf g+w /opt/app-root  &&  usermod -g root jovyan
-
-RUN  usermod -g root jovyan
-
-# Adjust permissions on /etc/passwd so writable by group root.
-
-RUN chmod g+w /etc/passwd
-
 
 # Revert the user but set it to be an integer user ID else the S2I build
 # process will reject the builder image as can't tell if user name
 # really maps to user ID for root.
-
 USER 1000
 
 # Override command to startup Jupyter notebook. The original is wrapped
